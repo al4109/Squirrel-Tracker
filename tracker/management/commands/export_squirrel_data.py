@@ -4,12 +4,13 @@ import csv
 import os
 
 class Command(BaseCommand):
-    help = 'Export the csv'
+    help = 'Export the data in CSV format'
+
     def add_arguments(self,parser):
         parser.add_argument('path')
 
-    def handle(self, *args, **options):
-        with open(options['path'],'w',) as csv_writer:
+    def handle(self, *args, **kwargs):
+        with open(kwargs['path'],'w',) as csv_writer:
             parameters = [
                     'x',
                     'y',
@@ -64,4 +65,4 @@ class Command(BaseCommand):
                     'indifferent': squirrel.Indifferent,
                     'runs_from': squirrel.Runs_From,
                     })
-            self.stdout.write(self.style.SUCCESS('Successfully Create:{}'.format(options['path'])))
+            self.stdout.write(self.style.SUCCESS('Successfully Create:{}'.format(kwargs['path'])))
