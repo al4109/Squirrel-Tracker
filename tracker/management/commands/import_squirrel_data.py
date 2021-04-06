@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from SquirrelFinder.models import SquirrelTracker
+from tracker.models import SquirrelTracker
 import csv
 import os
 import datetime
