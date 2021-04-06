@@ -1,4 +1,4 @@
 from django.apps import AppConfig
 
-class SquirrelConfig(AppConfig):
+class TrackerConfig(AppConfig):
     name = 'tracker'
