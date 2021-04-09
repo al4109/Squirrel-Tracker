@@ -119,45 +119,45 @@ class SquirrelTracker(models.Model):
         )
 
     Kuks = models.BooleanField(
-        help_text = ('Kuks?'),
+        help_text = ('Kuks'),
         default = False,
         )
 
-     Quaas = models.BooleanField(
-        help_text = ('Quaas?'),
+    Quaas = models.BooleanField(
+        help_text = ('Quaas'),
         default = False,
         )
 
-     Tail_Flags = models.BooleanField(
-        help_text = ('Tail Flags?'),
+    Moans = models.BooleanField(
+        help_text='Moans',
         default = False,
         )
 
-     Tail_Twitches = models.BooleanField(
-        help_text = ('Tail Twitches?'),
+    Tail_Flags = models.BooleanField(
+        help_text = ('Tail Flags'),
         default = False,
         )
 
-     Approaches = models.BooleanField(
-        help_text = ('Approaches?'),
+    Tail_Twitches = models.BooleanField(
+        help_text = ('Tail Twitches'),
+        default = False,
+        )
+    
+    Approaches = models.BooleanField(
+        help_text = ('Approaches'),
         default = False,
         )
 
-     Indifferent = models.BooleanField(
-        help_text = ('Indifferent?'),
+    Indifferent = models.BooleanField(
+        help_text = ('Indifferent'),
         default = False,
         )
 
-     Runs_From = models.BooleanField(
-        help_text = ('Runs From?'),
+    Runs_From = models.BooleanField(
+        help_text = ('Runs From'),
         default = False,
         )
 
-     Moans = models.BooleanField(
-            help_text='Moans',
-            default = False,
-        )
-
-     def __str__(self):
+    def __str__(self):
         return self.Unique_Squirrel_ID
 
