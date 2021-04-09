@@ -16,6 +16,7 @@ class SquirrelTracker(models.Model):
         unique = True,
         primary_key=True,
         )
+
     PM = 'PM'
     AM = 'AM'
 
@@ -129,7 +130,7 @@ class SquirrelTracker(models.Model):
         )
 
     Moans = models.BooleanField(
-        help_text='Moans',
+        help_text = ('Moans'),
         default = False,
         )
 
