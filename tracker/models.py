@@ -88,27 +88,27 @@ class SquirrelTracker(models.Model):
         )
 
     Running = models.BooleanField(
-        help_text = ('Running?'),
+        help_text = ('Running'),
         default = False,
         )
 
     Chasing = models.BooleanField(
-        help_text = ('Chasing?'),
+        help_text = ('Chasing'),
         default = False,
         )
 
     Climbing = models.BooleanField(
-        help_text = ('Climbing?'),
+        help_text = ('Climbing'),
         default = False,
         )
 
     Eating = models.BooleanField(
-        help_text = ('Eating?'),
+        help_text = ('Eating'),
         default = False,
         )
 
     Foraging = models.BooleanField(
-        help_text = ('Foraging?'),
+        help_text = ('Foraging'),
         default = False,
         )
 
