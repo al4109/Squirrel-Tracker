@@ -5,7 +5,7 @@
 ## Functions
 
 ## Group Info 
-Project Group 51, Section 1
-UNIs: [al4109, zl2961]
-Server Link: 
+- Project Group 51, Section 1
+- UNIs: [al4109, zl2961]
+- Server Link: 
 
