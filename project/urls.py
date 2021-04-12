@@ -20,5 +20,6 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('map/', views.show_map, name='show_map'),
     path('', include('tracker.urls')),
     ]

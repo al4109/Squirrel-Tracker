@@ -9,7 +9,7 @@ class Form(ModelForm):
 class CreateForm(ModelForm):
     class Meta:
         model = SquirrelTracker
-        fields = ['X', 'Y', 'Squirrel_ID',
+        fields = ['X', 'Y', 'Unique_Squirrel_ID',
                   'Shift', 'Date', 'Age',
                   'Primary_Fur_Color', 'Location', 'Specific_Location',
                   'Running', 'Chasing', 'Climbing',
