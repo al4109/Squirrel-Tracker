@@ -24,11 +24,11 @@ def all_sighting(request):
     
 def stats_sighting(request):
     statdict = [
-            SquirrelTracker.objects.filter(Age ='Adult').aggregate(Adult_Squirrels = Count('unique_squirrel_id')),
-            SquirrelTracker.objects.filter(Primary Fur Color ='Cinnamon').aggregate(Cinnamon_Color_Squirrels = Count('unique_squirrel_id')),
-            SquirrelTracker.objects.filter(Location ='Above Ground').aggregate(Found_Above_Ground_Squirrels = Count('unique_squirrel_id')),
-            SquirrelTracker.objects.filter(Shift ='AM').aggregate(Sightings_Occured_Morning = Count('unique_squirrel_id')),
-            SquirrelTracker.objects.filter(Date ='10062018').aggregate(Sightings_Occured_October6th_2018 = Count('unique_squirrel_id')),
+            SquirrelTracker.objects.filter(Age ='Adult').aggregate(Adult_Squirrels = Count('Unique_Squirrel_ID')),
+            SquirrelTracker.objects.filter(Primary Fur Color ='Cinnamon').aggregate(Cinnamon_Color_Squirrels = Count('Unique_Squirrel_ID')),
+            SquirrelTracker.objects.filter(Location ='Above Ground').aggregate(Found_Above_Ground_Squirrels = Count('Unique_Squirrel_ID')),
+            SquirrelTracker.objects.filter(Shift ='AM').aggregate(Sightings_Occured_Morning = Count('Unique_Squirrel_ID')),
+            SquirrelTracker.objects.filter(Date ='10062018').aggregate(Sightings_Occured_October6th_2018 = Count('Unique_Squirrel_ID')),
             ]
     stat_list=[]
     for stat in statdict:
@@ -50,8 +50,8 @@ def create_sighting(request):
             }
     return render(request,'tracker/create.html',context)
     
-def edit_sighting(request, unique_squirrel_id):
-    squirrel= SquirrelTracker.objects.get_object_or_404(pk =unique_squirrel_id)
+def edit_sighting(request, Unique_Squirrel_ID):
+    squirrel= SquirrelTracker.objects.get_object_or_404(pk = Unique_Squirrel_ID)
     if request.method =='POST':
         form = Form(request.POST, instance= squirrel)
         if form.is_valid():
