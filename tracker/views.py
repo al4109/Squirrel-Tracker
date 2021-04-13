@@ -51,17 +51,27 @@ def create_sighting(request):
     return render(request,'tracker/create.html',context)
     
 def edit_sighting(request, Unique_Squirrel_ID):
-    squirrel= SquirrelTracker.objects.get_object_or_404(pk = Unique_Squirrel_ID)
+    squirrel= get_object_or_404(SquirrelTracker, pk = Unique_Squirrel_ID)
     if request.method =='POST':
-        form = Form(request.POST, instance= squirrel)
-        if form.is_valid():
-            form.save()
-            return redirect(f'/traker/sightings/')
+        try:
+            form = Form(request.POST, instance= squirrel)
+			form.save()
+			return redirect(f'/traker/sightings/')
+		except (KeyError, SquirrelTracker.DoesNotExist):
+			return render(request, 'tracker/edit.html', {
+			'squirrel': squirrel,
+            'error_message': "There is no such Squirrel.",})
     else:
-        form = Form(instance = squirrel)
-        context = {
+		try:
+        	form = Form(instance = squirrel)
+        	context = {
             'form':form,
             'squirrel':squirrel,
             }
-    return render(request,'tracker/edit.html',context)
+			return render(request,'tracker/edit.html',context)
+		except (KeyError, SquirrelTracker.DoesNotExist):
+			return render(request, 'tracker/edit.html', {
+			'squirrel': squirrel,
+            'error_message': "There is no such Squirrel.",})
+  
     
