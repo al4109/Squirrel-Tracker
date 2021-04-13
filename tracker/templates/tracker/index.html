@@ -15,11 +15,29 @@
 	<div class="inner"><button class="button" onclick="window.location.href='stats/'">View Squirrel Statstics</button></div>
 	<div class="inner"><button class="button" onclick="window.location.href='map/'">See Squirrel Map</button></div>
     </div>
-   
-    <br>
 
+    <br>
     <div id="img_container" width="100%">
         <img id = "img" src="https://www.animalaid.org.uk/wp-content/uploads/2017/03/grey-squirrel-with-nuts-istock-1-e1558093434408-992x561.jpg" width="100%">
-    <p id="smalltext">Created by Group 51</p>
+
+    <p id="regulartext">Current Squirrels in Database</p>
+    <p id="smalltext">Click on the Squirrel ID and you can update its information :)</p>
+    <table style="margin-left: 30%">
+        <thead>
+            <tr>
+                <th>Unique Squirrel ID</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for squirrel in squirrels %}
+            <tr>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+	<p id="smalltext">Created by Group 51</p>
     </body>
 </html>
