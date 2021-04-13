@@ -1,10 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import SquirrelTracker
 from .forms import Form, CreateForm
 
-def index(request):
-    return render(request, 'tracker/index.html', {})
+# def index(request):
+#     return render(request, 'tracker/index.html', {})
 
 def index(request):
     squirrels = SquirrelTracker.objects.all()
@@ -39,29 +39,26 @@ def stats_sighting(request):
     
 def create_sighting(request):
     if request.method =='POST':
-        #check data with form
-        form = SquirrelForm(request.POST)
+        form = CreateForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(f'/traker/sightings/')
     else:
-        #build empty form
-        form = SquirrelForm()
+        form = CreateForm()
     context = {
             'form':form,
             }
     return render(request,'tracker/create.html',context)
     
 def edit_sighting(request, unique_squirrel_id):
-    squirrel= SquirrelTracker.objects.get( pk =Unique_Squirrel_ID)
+    squirrel= SquirrelTracker.objects.get_object_or_404(pk =unique_squirrel_id)
     if request.method =='POST':
-        #check data with form
-        form = SquirrelForm(request.POST, instance= squirrel)
+        form = Form(request.POST, instance= squirrel)
         if form.is_valid():
             form.save()
             return redirect(f'/traker/sightings/')
     else:
-        form = SquirrelForm(instance = squirrel)
+        form = Form(instance = squirrel)
         context = {
             'form':form,
             'squirrel':squirrel,
