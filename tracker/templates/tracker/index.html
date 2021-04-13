@@ -1,4 +1,25 @@
 <!doctype html>
-<html>
-	<body>This is an index page template.</body>
+<html lang="en">
+    <head>
+        <title>Squirrel Tracker</title>
+	{% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'tracker/style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+    </head>
+
+    <body>
+    <p id="title">Welcome to Squirrel Tracker</p>
+    
+    <div id="outer">
+	<div class="inner"><button class="button" onclick="window.location.href='add/'">Add New Squirrels</button></div>
+	<div class="inner"><button class="button" onclick="window.location.href='stats/'">View Squirrel Statstics</button></div>
+	<div class="inner"><button class="button" onclick="window.location.href='map/'">See Squirrel Map</button></div>
+    </div>
+   
+    <br>
+
+    <div id="img_container" width="100%">
+        <img id = "img" src="https://www.animalaid.org.uk/wp-content/uploads/2017/03/grey-squirrel-with-nuts-istock-1-e1558093434408-992x561.jpg" width="100%">
+    <p id="smalltext">Created by Group 51</p>
+    </body>
 </html>
