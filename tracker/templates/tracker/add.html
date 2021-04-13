@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Edit</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'tracker/style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+</head>
+<body>
+        <p id="title">Edit detail of sighting: {{squirrel.Unique_Squirrel_ID }}</p>
+
+        <form method = "POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <br>
+        <br>
+        <input type ="submit" value = "submit" style="font-size:16px; border-radius: 4px; font-family:'Fredoka One';
+    width: 120px;">
+        </form>
+
+        {% if success %}
+        <p id="regulartext">Saved successfully</p>
+        {% endif %}
+
+        <div id="outer">
+          <div class="inner"><button class="button" onclick="window.location.href='index/'">Back to the Squirrel List</button></div>
+          <div class="inner"><button class="button" onclick="window.location.href='stats/'">View Squirrel Statstics</button></div>
+          <div class="inner"><button class="button" onclick="window.location.href='map/'">See Squirrel Map</button></div>
+  </div>
+
+
+</body>
+</html>

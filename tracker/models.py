@@ -3,52 +3,44 @@ from django.utils.translation import gettext as _
 
 class SquirrelTracker(models.Model):
     X = models.FloatField (
-        help_text = ('Longitude'),
-        )
+        help_text = ('Longitude'),)
 
     Y = models.FloatField(
-        help_text = ('Latitude'),
-        )
+        help_text = ('Latitude'),)
 
     Unique_Squirrel_ID = models.CharField(
         help_text = ('Unique Squirrel ID'),
         max_length = 50,
         unique = True,
-        primary_key=True,
-        )
+        primary_key=True,)
 
     PM = 'PM'
     AM = 'AM'
 
     SHIFT_CHOICES = (
         (PM,'PM'),
-        (AM,'AM'),
-        )
+        (AM,'AM'),)
 
     Shift = models.CharField(
         help_text = ('shift'),
         max_length = 20,
-        choices = SHIFT_CHOICES,
-        )
+        choices = SHIFT_CHOICES,)
 
     Date = models.DateField(
-        help_text = ('date'),
-        )
+        help_text = ('date'),)
 
     ADULT='Adult'
     JUVENILE='Juvenile'
 
     AGE_CHOICES = (
         (ADULT,'Adult'),
-        (JUVENILE,'Juvenile'),
-        )
+        (JUVENILE,'Juvenile'),)
 
     Age = models.CharField(
         help_text = ('Age'),
         max_length = 25,
         choices = AGE_CHOICES,
-        null = True,
-        )
+        null = True,)
 
     GRAY = 'Gray'
     CINNAMON = 'Cinnamon'
@@ -57,107 +49,88 @@ class SquirrelTracker(models.Model):
     FUR_COLOR_CHOICES = (
         (GRAY,'Gray'),
         (CINNAMON,'Cinnamon'),
-        (BLACK,'Black'),
-        )
+        (BLACK,'Black'),)
 
     Primary_Fur_Color = models.CharField(
         help_text = ('Primary Fur Color'),
         max_length = 25,
         choices = FUR_COLOR_CHOICES,
-        null = True,
-        )
+        null = True,)
 
     GROUND_PLANE = 'Ground Plane'
     ABOVE_GROUND = 'Above Ground'
 
     LOCATION_CHOICES = (
         (GROUND_PLANE,'Ground Plane'),
-        (ABOVE_GROUND,'Above Ground'),
-        )
+        (ABOVE_GROUND,'Above Ground'),)
 
     Location = models.CharField(
         help_text = ('Location'),
         max_length = 25,
         choices = LOCATION_CHOICES,
-        null = True,
-        )
+        null = True,)
 
     Specific_Location = models.CharField(
         help_text = ('Specific Location'),
         max_length = 50,
-        null = True,
-        )
+        null = True,)
 
     Running = models.BooleanField(
         help_text = ('Running'),
-        default = False,
-        )
+        default = False,)
 
     Chasing = models.BooleanField(
         help_text = ('Chasing'),
-        default = False,
-        )
+        default = False,)
 
     Climbing = models.BooleanField(
         help_text = ('Climbing'),
-        default = False,
-        )
+        default = False,)
 
     Eating = models.BooleanField(
         help_text = ('Eating'),
-        default = False,
-        )
+        default = False,)
 
     Foraging = models.BooleanField(
         help_text = ('Foraging'),
-        default = False,
-        )
+        default = False,)
 
     Other_Activities = models.CharField(
         help_text = ('Other Activities'),
         max_length = 50,
-        null = True,
-        )
+        null = True,)
 
     Kuks = models.BooleanField(
         help_text = ('Kuks'),
-        default = False,
-        )
+        default = False,)
 
     Quaas = models.BooleanField(
         help_text = ('Quaas'),
-        default = False,
-        )
+        default = False,)
 
     Moans = models.BooleanField(
         help_text = ('Moans'),
-        default = False,
-        )
+        default = False,)
 
     Tail_Flags = models.BooleanField(
         help_text = ('Tail Flags'),
-        default = False,
-        )
+        default = False,)
 
     Tail_Twitches = models.BooleanField(
         help_text = ('Tail Twitches'),
-        default = False,
-        )
+        default = False,)
     
     Approaches = models.BooleanField(
         help_text = ('Approaches'),
-        default = False,
-        )
+        default = False,)
 
     Indifferent = models.BooleanField(
         help_text = ('Indifferent'),
-        default = False,
-        )
+        default = False,)
 
     Runs_From = models.BooleanField(
         help_text = ('Runs From'),
-        default = False,
-        )
+        default = False,)
 
     def __str__(self):
         return self.Unique_Squirrel_ID
