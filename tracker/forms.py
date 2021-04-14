@@ -1,11 +1,6 @@
 from django.forms import ModelForm
 from .models import SquirrelTracker
 
-class Form(ModelForm):
-    class Meta:
-        model = SquirrelTracker
-        fields = ['X', 'Y', 'Shift', 'Date', 'Age'] 
-
 class CreateForm(ModelForm):
     class Meta:
         model = SquirrelTracker
