@@ -13,4 +13,4 @@ This project is to create an application that can track information of the squir
 ## Group Info 
 - Project Group 51, Section 1
 - UNIs: [al4109, zl2961]
-- Server Link: 
+- Server Link: https://tfa-2021-spring-al4109.appspot.com
