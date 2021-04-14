@@ -73,7 +73,8 @@ class SquirrelTracker(models.Model):
     Specific_Location = models.CharField(
         help_text = ('Specific Location'),
         max_length = 50,
-        null = True,)
+        null = True,
+        blank = True,)
 
     Running = models.BooleanField(
         help_text = ('Running'),
@@ -98,7 +99,8 @@ class SquirrelTracker(models.Model):
     Other_Activities = models.CharField(
         help_text = ('Other Activities'),
         max_length = 50,
-        null = True,)
+        null = True,
+        blank = True,)
 
     Kuks = models.BooleanField(
         help_text = ('Kuks'),
