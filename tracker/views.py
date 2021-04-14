@@ -5,7 +5,7 @@ from .forms import Form, CreateForm
 from django.db.models import Count
 
 def index(request):
-    squirrels = SquirrelTracker.objects.order_by('Unique_Squirrel_ID')
+    squirrels = SquirrelTracker.objects.order_by('Date')
     context = {
         'squirrels': squirrels
     }
