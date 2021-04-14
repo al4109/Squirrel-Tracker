@@ -21,20 +21,19 @@ def show_map(request):
 def stats(request):
     if request.method == 'GET':
         context = {
-            'squirrels': SquirrelTracker.objects.all(),
-            'Squirrel_count': SquirrelTracker.objects.all().count(),
-            'Age_Adult_count':SquirrelTracker.objects.filter(Age = "Adult").count(),
-            'Age_Juvenile_count':SquirrelTracker.objects.filter(Age = "Juvenile").count(),
-            'Shift_AM_count':SquirrelTracker.objects.filter(Shift = "AM").count(),
-            'Shift_PM_count':SquirrelTracker.objects.filter(Shift = "PM").count(),
-            'Color_Gray_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Gray").count(),
-            'Color_Cinnamon_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Cinnamon").count(),
-            'Color_Black_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Black").count(),
-            'Running_count':SquirrelTracker.objects.filter(Running = "True").count(),
-            'Chasing_count':SquirrelTracker.objects.filter(Chasing = "True").count(),
-            'Climbing_count':SquirrelTracker.objects.filter(Climbing = "True").count(),
-            'Eating_count':SquirrelTracker.objects.filter(Eating = "True").count(),
-            'Foraging_count':SquirrelTracker.objects.filter(Foraging = "True").count(),
+            'Squirrels': SquirrelTracker.objects.all(),
+            'Squirrel_count': SquirrelTracker.objects.all().Count(),
+            'Age_Adult_count':SquirrelTracker.objects.filter(Age = "Adult").Count(),    'Age_Juvenile_count':SquirrelTracker.objects.filter(Age = "Juvenile").Count(),
+            'Shift_AM_count':SquirrelTracker.objects.filter(Shift = "AM").Count(),
+            'Shift_PM_count':SquirrelTracker.objects.filter(Shift = "PM").Count(),
+            'Color_Gray_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Gray").Count(),
+            'Color_Cinnamon_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Cinnamon").Count(),
+            'Color_Black_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Black").Count(),
+            'Running_count':SquirrelTracker.objects.filter(Running = "True").Count(),
+            'Chasing_count':SquirrelTracker.objects.filter(Chasing = "True").Count(),
+            'Climbing_count':SquirrelTracker.objects.filter(Climbing = "True").Count(),
+            'Eating_count':SquirrelTracker.objects.filter(Eating = "True").Count(),
+            'Foraging_count':SquirrelTracker.objects.filter(Foraging = "True").Count(),
             }
         return render(request, 'tracker/stats.html', context)
 
