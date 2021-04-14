@@ -11,8 +11,8 @@
     <p id="title">Welcome to Squirrel Tracker</p>
     
     <div id="outer">
-	<div class="inner"><button class="button" onclick="window.location.href='add/'">Add New Squirrels</button></div>
-	<div class="inner"><button class="button" onclick="window.location.href='stats/'">View Squirrel Statstics</button></div>
+	<div class="inner"><button class="button" onclick="window.location.href='sightings/add/'">Add New Squirrels</button></div>
+	<div class="inner"><button class="button" onclick="window.location.href='sightings/stats/'">View Squirrel Statstics</button></div>
 	<div class="inner"><button class="button" onclick="window.location.href='map/'">See Squirrel Map</button></div>
     </div>
 
@@ -22,7 +22,8 @@
 
     <p id="regulartext">Current Squirrels in Database</p>
     <p id="smalltext">Click on the Squirrel ID and you can update its information :)</p>
-    <table style="margin-left: 30%">
+
+<table style="margin-left:auto; margin-right:auto">
         <thead>
             <tr>
                 <th>Unique Squirrel ID</th>
@@ -32,6 +33,8 @@
         <tbody>
             {% for squirrel in squirrels %}
             <tr>
+		    <td style="text-align:left; font-size:12px;"><a href="sightings/{{ squirrel.Unique_Squirrel_ID }}" id='{{squirrel.Unique_Squirrel_ID}}'>{{ squirrel.Unique_Squirrel_ID }}</a></td>
+                <td style="text-align:left; font-size:12px;">{{ squirrel.Date }}</td>
 
             </tr>
             {% endfor %}

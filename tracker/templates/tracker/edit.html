@@ -1,27 +1,32 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>New Sighting</title>
-    {% load static %}
+        <meta charset="UTF-8">
+        <title>Edit</title>
+        {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'tracker/style.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 </head>
-    <body>
-<p id="title">Add New Squirrel Sighting</p>
+<body>
+        <p id="title">Edit detail of sighting: {{squirrel.Unique_Squirrel_ID }}</p>
 	<form method = "POST" style="text-align: left; margin-left:40%; margin-top:15px; margin-bottom:15px;">
-    {% csrf_token %}
-    {{form.as_p}}
-	<input type="submit" name="Submit" value="Submit" style="font-size:16px; border-radius: 4px; font-family:'Fredoka One'; width: 120px;">
-	</form>
-    {% if success %}
-        <p id="regulartext">Saved successfully.</p>
-    {% endif %}
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type ="submit" value = "Submit" style="font-size:16px; border-radius: 4px; font-family:'Fredoka One';
+    width: 120px;">
+        </form>
+        {% if success %}
 
-    <div id="outer">
+        <p id="regulartext">Saved successfully</p>
+        {% endif %}
+
+        <div id="outer">
           <div class="inner"><button class="button" onclick="window.location.href= '{% url 'sightings:index' %}'">Back to the Squirrel List</button></div>
           <div class="inner"><button class="button" onclick="window.location.href= '{% url 'sightings:stats' %}'">View Squirrel Statstics</button></div>
           <div class="inner"><button class="button" onclick="window.location.href= '{% url 'sightings:map' %}'">See Squirrel Map</button></div>
-        </div>
-    </body>
+  </div>
+
+
+</body>
 </html>

@@ -2,9 +2,12 @@ from django.urls import path
 
 from . import views
 
+app_name = 'sightings'
+
 urlpatterns = [
-<<<<<<< HEAD
         path('', views.index, name='index'),
-        path('add/', views.add, name='add'),
-        path('stats/', views.stats, name='stats'),
-        path('<Unique_Squirrel_ID>/', views.detail, name='detail')
+        path('map/',views.show_map, name='map'),
+        path('sightings/add/', views.add, name='add'),
+        path('sightings/stats/', views.stats, name='stats'),
+        path('sightings/<Unique_Squirrel_ID>/', views.detail, name='detail')
+        ]

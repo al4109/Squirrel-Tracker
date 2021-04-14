@@ -1,10 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import SquirrelTracker
 from .forms import Form, CreateForm
-
-# def index(request):
-#     return render(request, 'tracker/index.html', {})
+from django.db.models import Count
 
 def index(request):
     squirrels = SquirrelTracker.objects.all()
@@ -20,58 +18,51 @@ def show_map(request):
     }
     return render(request, 'tracker/map.html', context)
 
-def all_sighting(request):
-    
-def stats_sighting(request):
-    statdict = [
-            SquirrelTracker.objects.filter(Age ='Adult').aggregate(Adult_Squirrels = Count('Unique_Squirrel_ID')),
-            SquirrelTracker.objects.filter(Primary Fur Color ='Cinnamon').aggregate(Cinnamon_Color_Squirrels = Count('Unique_Squirrel_ID')),
-            SquirrelTracker.objects.filter(Location ='Above Ground').aggregate(Found_Above_Ground_Squirrels = Count('Unique_Squirrel_ID')),
-            SquirrelTracker.objects.filter(Shift ='AM').aggregate(Sightings_Occured_Morning = Count('Unique_Squirrel_ID')),
-            SquirrelTracker.objects.filter(Date ='10062018').aggregate(Sightings_Occured_October6th_2018 = Count('Unique_Squirrel_ID')),
-            ]
-    stat_list=[]
-    for stat in statdict:
-        stat_list.append([list(stat.keys())[0],list(stat.values())[0]])
+def stats(request):
+    if request.method == 'GET':
+        context = {
+            'squirrels': SquirrelTracker.objects.all(),
+            'Squirrel_count': SquirrelTracker.objects.all().count(),
+            'Age_Adult_count':SquirrelTracker.objects.filter(Age = "Adult").count(),
+            'Age_Juvenile_count':SquirrelTracker.objects.filter(Age = "Juvenile").count(),
+            'Shift_AM_count':SquirrelTracker.objects.filter(Shift = "AM").count(),
+            'Shift_PM_count':SquirrelTracker.objects.filter(Shift = "PM").count(),
+            'Color_Gray_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Gray").count(),
+            'Color_Cinnamon_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Cinnamon").count(),
+            'Color_Black_count':SquirrelTracker.objects.filter(Primary_Fur_Color = "Black").count(),
+            'Running_count':SquirrelTracker.objects.filter(Running = "True").count(),
+            'Chasing_count':SquirrelTracker.objects.filter(Chasing = "True").count(),
+            'Climbing_count':SquirrelTracker.objects.filter(Climbing = "True").count(),
+            'Eating_count':SquirrelTracker.objects.filter(Eating = "True").count(),
+            'Foraging_count':SquirrelTracker.objects.filter(Foraging = "True").count(),
+            }
+        return render(request, 'tracker/stats.html', context)
 
-    context = {'stats':sighting_list,}
-    return render(request, 'tracker/stats.html', context)
-    
-def create_sighting(request):
+def add(request):
     if request.method =='POST':
         form = CreateForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(f'/traker/sightings/')
+            return redirect(f'/')
     else:
         form = CreateForm()
-    context = {
+        context = {
             'form':form,
             }
-    return render(request,'tracker/create.html',context)
-    
-def edit_sighting(request, Unique_Squirrel_ID):
-    squirrel= get_object_or_404(SquirrelTracker, pk = Unique_Squirrel_ID)
+        return render(request,'tracker/add.html',context)
+            
+
+def detail(request, Unique_Squirrel_ID):
+    squirrel= SquirrelTracker.objects.get( pk=Unique_Squirrel_ID)
     if request.method =='POST':
-        try:
-            form = Form(request.POST, instance= squirrel)
-			form.save()
-			return redirect(f'/traker/sightings/')
-		except (KeyError, SquirrelTracker.DoesNotExist):
-			return render(request, 'tracker/edit.html', {
-			'squirrel': squirrel,
-            'error_message': "There is no such Squirrel.",})
+        form = CreateForm(request.POST, instance= squirrel)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/')
     else:
-		try:
-        	form = Form(instance = squirrel)
-        	context = {
+        form = CreateForm(instance = squirrel)
+        context = {
             'form':form,
             'squirrel':squirrel,
             }
-			return render(request,'tracker/edit.html',context)
-		except (KeyError, SquirrelTracker.DoesNotExist):
-			return render(request, 'tracker/edit.html', {
-			'squirrel': squirrel,
-            'error_message': "There is no such Squirrel.",})
-  
-    
+    return render(request,'tracker/edit.html',context)
