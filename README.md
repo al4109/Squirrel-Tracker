@@ -6,8 +6,7 @@ This project is to create an application that can track information of the squir
 ## Functions
 1. Management commands to import and export data
 2. tracker/map/ to show a map that displays the location of the squirrel sightings on an Open Streets map
-3. tracker/sightings/ to show the lists of all squirrel sightings with links to view each sighting
-	3.1 Here you can input Unique Squirrel ID to update the information about the particular sighting
+3. tracker/sightings/ to show the lists of all squirrel sightings with links to view each sighting > Here you can click on the Unique Squirrel ID to update the information about the particular sighting
 4. tracker/sightings/add/ to add a new squirrel data by filling out the features of the database
 5. tracker/sightings/stats/ to show general statistics about the squirrels 
 
